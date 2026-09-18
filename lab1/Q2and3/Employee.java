@@ -1,4 +1,4 @@
-package lab1;
+package lab1.Q2and3;
 
 public class Employee {
     private String f_name;

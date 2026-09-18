@@ -1,4 +1,4 @@
-package lab1;
+package lab1.Q4and5;
 
 public class AccountTest {
     public static void main(String[] args) {

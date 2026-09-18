@@ -1,4 +1,4 @@
-package lab1;
+package lab1.Q4and5;
 public class AccountListTest {
     public static void main(String[] args) {
         AccountList al = new AccountList(3);

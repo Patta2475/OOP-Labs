@@ -1,4 +1,4 @@
-package lab1;
+package lab1.Q4and5;
 public class Account {
     private String name;
     private double balance;

@@ -1,4 +1,4 @@
-package lab1;
+package lab1.Q1;
 
 public class BookDemo {
     public static void main(String[] args) {
