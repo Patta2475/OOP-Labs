@@ -49,12 +49,12 @@ public class AddPersonnelPage extends Page implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Enlisted")) {
-            hide();;
+            hide();
             new EnlistedPage(this);
         }
 
         if (e.getActionCommand().equals("Officer")) {
-            hide();;
+            hide();
             new OfficerPage(this);
         }
     }

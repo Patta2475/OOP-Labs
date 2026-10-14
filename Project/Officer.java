@@ -2,7 +2,7 @@ package Project;
 
 public class Officer extends NavyPersonnel{
     private String commandUnit;
-    private String leaderShipCourse;
+    private String leadershipCourse;
 
     public enum OfficerRank implements Rank {
         ENSIGN,
@@ -11,29 +11,26 @@ public class Officer extends NavyPersonnel{
         ADMIRAL
     }
 
-    public Officer(String name, String ID, OfficerRank rank, int YearOfService, String commandUnit, String leaderShipCourse){
-        this.name = name;
-        id = ID;
-        this.rank = rank;
-        this.YearOfService = YearOfService;
+    public Officer(String name, String ID, OfficerRank rank, int YearOfService, String commandUnit, String leadershipCourse){
+        super(name, ID, rank, YearOfService);
         this.commandUnit = commandUnit;
-        this.leaderShipCourse = leaderShipCourse;
+        this.leadershipCourse = leadershipCourse;
     }
 
-    public String getCommanderUnit(){
+    public String getCommandUnit(){
         return commandUnit;
     }
 
-    public String getLeaderShipCourse(){
-        return leaderShipCourse;
+    public String getLeadershipCourse(){
+        return leadershipCourse;
     }
 
-    public void setCommandUnit(){
-
+    public int getYearOfService(){
+        return YearOfService;
     }
 
     @Override
     public String toString() {
-        return "Officer: " + name + " (" + id + ") | " + rank + " | Unit: " + commandUnit + " | " + YearOfService + " yrs | Course: " + leaderShipCourse;
+        return "Officer: " + name + " (" + id + ") | " + rank + " | Unit: " + commandUnit + " | " + YearOfService + " yrs | Course: " + leadershipCourse;
     }
 }

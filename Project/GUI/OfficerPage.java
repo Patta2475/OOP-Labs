@@ -11,12 +11,24 @@ import Project.Officer;
 public class OfficerPage extends Page implements ActionListener{
 
     private AddPersonnelPage personPage;
-    private JTextField nameBox, idBox, yearBox, leaderShipCourse, unitCommandBox;
+    private JTextField nameBox, idBox, yearBox, leadershipBox, unitCommandBox;
     private JComboBox<OfficerRank> rankBox;
+    private JTextArea listArea;
 
     public OfficerPage(AddPersonnelPage personPage) {
-        super("Add Enlisted Personnel Page");
+        super("Add Officer Page");
         this.personPage = personPage;
+
+        frame.setSize(500, 700);
+
+        listArea = new JTextArea(PersonnelManager.describeAll());
+        listArea.setEditable(false);
+        listArea.setLineWrap(true);
+        listArea.setWrapStyleWord(true);
+
+        JScrollPane listScroll = new JScrollPane(listArea);
+        listScroll.setBounds(15, 420, 450, 230);
+        frame.add(listScroll);
 
         JLabel title = new JLabel("Add Officer");
         title.setBounds(10, 0, 250, 30);
@@ -25,57 +37,55 @@ public class OfficerPage extends Page implements ActionListener{
 
         JLabel name = new JLabel("Name ");
         name.setBounds(15, 45, 250, 30);
-        name.setFont(new Font("Airal", Font.PLAIN, 16));
         nameBox = new JTextField();
         nameBox.setBounds(15, 70, 250, 30);
         frame.add(name); frame.add(nameBox);
 
         JLabel ID = new JLabel("ID ");
         ID.setBounds(15, 100, 250, 30);
-        ID.setFont(new Font("Airal", Font.PLAIN, 16));
         idBox = new JTextField();
         idBox.setBounds(15, 125, 250, 30);
         frame.add(ID); frame.add(idBox);
 
         JLabel RankText = new JLabel("Rank ");
         RankText.setBounds(15, 155, 250, 30);
-        RankText.setFont(new Font("Airal", Font.PLAIN, 16));
         rankBox = new JComboBox<>(OfficerRank.values());
         rankBox.setBounds(15,180,160,30);
         frame.add(RankText); frame.add(rankBox);
 
         JLabel yearOfService = new JLabel("Year of service ");
         yearOfService.setBounds(200, 155, 250, 30);
-        yearOfService.setFont(new Font("Airal", Font.PLAIN, 16));
         yearBox = new JTextField();
         yearBox.setBounds(200, 180, 65, 30);
         frame.add(yearOfService); frame.add(yearBox);
 
         JLabel unitCommand = new JLabel("Unit Command");
         unitCommand.setBounds(15, 210, 250, 30);
-        unitCommand.setFont(new Font("Airal", Font.PLAIN, 16));
         unitCommandBox = new JTextField();
         unitCommandBox.setBounds(15,235,160,30);
         frame.add(unitCommand); frame.add(unitCommandBox);
 
         JLabel leadership = new JLabel("Leadership Course");
         leadership.setBounds(15, 265, 250, 30);
-        leadership.setFont(new Font("Airal", Font.PLAIN, 16));
-        leaderShipCourse = new JTextField();
-        leaderShipCourse.setBounds(15, 290, 250, 30);
-        frame.add(leadership); frame.add(leaderShipCourse);
+        leadershipBox = new JTextField();
+        leadershipBox.setBounds(15, 290, 250, 30);
+        frame.add(leadership); frame.add(leadershipBox);
 
         JButton add = new JButton("Add");
         add.setActionCommand("Add");
         add.addActionListener(this);
-        add.setBounds(115, 350, 70, 50);
+        add.setBounds(115, 330, 70, 50);
         frame.add(add);
 
         JButton back = new JButton("Back");
         back.setActionCommand("Back");
         back.addActionListener(this);
-        back.setBounds(275, 350, 70, 50);
+        back.setBounds(275, 330, 70, 50);
         frame.add(back);
+
+        JLabel allName = new JLabel("All people name that currently stored");
+        allName.setBounds(15, 390, 250, 30);
+        frame.add(allName);
 
         show();
 
@@ -92,7 +102,7 @@ public class OfficerPage extends Page implements ActionListener{
             String name = nameBox.getText().trim();
             String id = idBox.getText().trim();
             String unitCommand = unitCommandBox.getText().trim();
-            String leaderShipC = leaderShipCourse.getText().trim();
+            String leadershipCourse = leadershipBox.getText().trim();
 
             if (name.isEmpty() || id.isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "Please enter a name and an ID.");
@@ -120,16 +130,17 @@ public class OfficerPage extends Page implements ActionListener{
 
             OfficerRank rank = (OfficerRank) rankBox.getSelectedItem();
 
-            Officer o = new Officer(name, id, rank, years, unitCommand, leaderShipC);
+            Officer o = new Officer(name, id, rank, years, unitCommand, leadershipCourse);
             PersonnelManager.add(o);
-
+            listArea.setText(PersonnelManager.describeAll());
+            
             JOptionPane.showMessageDialog(frame, "Added: " + name);
         }
 
         nameBox.setText("");
         idBox.setText("");
         yearBox.setText("");
-        leaderShipCourse.setText("");
+        leadershipBox.setText("");
         rankBox.setSelectedIndex(0);
         unitCommandBox.setText("");
     }

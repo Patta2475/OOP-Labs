@@ -15,10 +15,22 @@ public class EnlistedPage extends Page implements ActionListener{
     private JTextField nameBox, idBox, yearBox, dutyHourBox;
     private JComboBox<EnlistedRank> rankBox;
     private JComboBox<Specialty> specialtyBox;
+    private JTextArea listArea;
 
     public EnlistedPage(AddPersonnelPage personPage) {
         super("Add Enlisted Personnel Page");
         this.personPage = personPage;
+
+        frame.setSize(500, 700);
+
+        listArea = new JTextArea(PersonnelManager.describeAll());
+        listArea.setEditable(false);
+        listArea.setLineWrap(true);
+        listArea.setWrapStyleWord(true);
+
+        JScrollPane listScroll = new JScrollPane(listArea);
+        listScroll.setBounds(15, 420, 450, 230);
+        frame.add(listScroll);
 
         JLabel title = new JLabel("Add Enlisted Personnel");
         title.setBounds(10, 0, 250, 30);
@@ -27,42 +39,36 @@ public class EnlistedPage extends Page implements ActionListener{
 
         JLabel name = new JLabel("Name ");
         name.setBounds(15, 45, 250, 30);
-        name.setFont(new Font("Airal", Font.PLAIN, 16));
         nameBox = new JTextField();
         nameBox.setBounds(15, 70, 250, 30);
         frame.add(name); frame.add(nameBox);
 
-        JLabel ID = new JLabel("ID ");
-        ID.setBounds(15, 100, 250, 30);
-        ID.setFont(new Font("Airal", Font.PLAIN, 16));
+        JLabel idLabel = new JLabel("ID ");
+        idLabel.setBounds(15, 100, 250, 30);
         idBox = new JTextField();
         idBox.setBounds(15, 125, 250, 30);
-        frame.add(ID); frame.add(idBox);
+        frame.add(idLabel); frame.add(idBox);
 
-        JLabel RankText = new JLabel("Rank ");
-        RankText.setBounds(15, 155, 250, 30);
-        RankText.setFont(new Font("Airal", Font.PLAIN, 16));
+        JLabel rankLabel = new JLabel("Rank ");
+        rankLabel.setBounds(15, 155, 250, 30);
         rankBox = new JComboBox<>(EnlistedRank.values());
         rankBox.setBounds(15,180,160,30);
-        frame.add(RankText); frame.add(rankBox);
+        frame.add(rankLabel); frame.add(rankBox);
 
         JLabel yearOfService = new JLabel("Year of service ");
         yearOfService.setBounds(200, 155, 250, 30);
-        yearOfService.setFont(new Font("Airal", Font.PLAIN, 16));
         yearBox = new JTextField();
         yearBox.setBounds(200, 180, 65, 30);
         frame.add(yearOfService); frame.add(yearBox);
 
-        JLabel SpecialtyText = new JLabel("Specialty ");
-        SpecialtyText.setBounds(15, 210, 250, 30);
-        SpecialtyText.setFont(new Font("Airal", Font.PLAIN, 16));
+        JLabel specialtyLabel = new JLabel("Specialty ");
+        specialtyLabel.setBounds(15, 210, 250, 30);
         specialtyBox = new JComboBox<>(Specialty.values());
         specialtyBox.setBounds(15,235,160,30);
-        frame.add(SpecialtyText); frame.add(specialtyBox);
+        frame.add(specialtyLabel); frame.add(specialtyBox);
 
         JLabel dutyHour = new JLabel("Duty hours");
         dutyHour.setBounds(200, 210, 250, 30);
-        dutyHour.setFont(new Font("Airal", Font.PLAIN, 16));
         dutyHourBox = new JTextField();
         dutyHourBox.setBounds(200, 235, 65, 30);
         frame.add(dutyHour); frame.add(dutyHourBox);
@@ -70,14 +76,18 @@ public class EnlistedPage extends Page implements ActionListener{
         JButton add = new JButton("Add");
         add.setActionCommand("Add");
         add.addActionListener(this);
-        add.setBounds(115, 350, 70, 50);
+        add.setBounds(115, 300, 70, 50);
         frame.add(add);
 
         JButton back = new JButton("Back");
         back.setActionCommand("Back");
         back.addActionListener(this);
-        back.setBounds(275, 350, 70, 50);
+        back.setBounds(275, 300, 70, 50);
         frame.add(back);
+
+        JLabel allName = new JLabel("All people name that currently stored");
+        allName.setBounds(15, 390, 250, 30);
+        frame.add(allName);
 
         show();
 
@@ -124,6 +134,7 @@ public class EnlistedPage extends Page implements ActionListener{
 
             EnlistedPersonnel p = new EnlistedPersonnel(name, id, rank, years, hours, specialty);
             PersonnelManager.add(p);
+            listArea.setText(PersonnelManager.describeAll());
 
             JOptionPane.showMessageDialog(frame, "Added: " + name);
         }

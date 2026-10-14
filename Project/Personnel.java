@@ -1,9 +1,11 @@
 package Project;
 
 public interface Personnel {
-    public String getID();
-    public Rank getRank();
-    public String toString();
+    String getID();
+    String getName();
+    Rank getRank();
+    int getYearOfService();
+    String toString();
 
-    public interface Rank{}
+    interface Rank {}
 }

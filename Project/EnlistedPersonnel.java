@@ -24,12 +24,21 @@ public class EnlistedPersonnel extends NavyPersonnel{
     protected int dutyHour;
 
     public EnlistedPersonnel(String name, String ID, EnlistedRank rank, int YearOfService, int dutyHour, Specialty specialty){
-        this.name = name;
-        id = ID;
-        this.rank = rank;
-        this.YearOfService = YearOfService;
+        super(name, ID, rank, YearOfService);
         this.dutyHour = dutyHour;
         this.specialty = specialty;
+    }
+
+    public int getYearOfService(){
+        return YearOfService;
+    }
+
+    public Specialty getSpecialty(){
+        return specialty;
+    }
+
+    public int getDutyHour(){
+        return dutyHour;
     }
 
     @Override

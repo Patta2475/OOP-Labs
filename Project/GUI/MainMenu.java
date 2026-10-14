@@ -14,25 +14,25 @@ public class MainMenu extends Page implements ActionListener {
         welcomeMessage.setFont(new Font("Arial", Font.BOLD, 18));
         welcomeMessage.setBounds(100, 50, 350, 30);
 
-        JButton Addpersonnel = new JButton("Add personnel");
-        Addpersonnel.setActionCommand("Addpersonnel");
-        Addpersonnel.addActionListener(this);
-        Addpersonnel.setBounds(150, 150, 200, 50);
+        JButton addPersonnelButton = new JButton("Add personnel");
+        addPersonnelButton.setActionCommand("Addpersonnel");
+        addPersonnelButton.addActionListener(this);
+        addPersonnelButton.setBounds(150, 150, 200, 50);
 
-        JButton Search = new JButton("Search");
-        Search.setActionCommand("Search");
-        Search.addActionListener(this);
-        Search.setBounds(150, 220, 200, 50);
+        JButton searchButton = new JButton("Search");
+        searchButton.setActionCommand("Search");
+        searchButton.addActionListener(this);
+        searchButton.setBounds(150, 220, 200, 50);
 
-        JButton Exit = new JButton("Exit");
-        Exit.setActionCommand("Exit");
-        Exit.setBounds(150, 290, 200, 50);
-        Exit.addActionListener(e -> System.exit(0));
+        JButton exitButton = new JButton("Exit");
+        exitButton.setActionCommand("Exit");
+        exitButton.setBounds(150, 290, 200, 50);
+        exitButton.addActionListener(e -> System.exit(0));
 
         frame.add(welcomeMessage);
-        frame.add(Addpersonnel);
-        frame.add(Search);
-        frame.add(Exit);
+        frame.add(addPersonnelButton);
+        frame.add(searchButton);
+        frame.add(exitButton);
         show();
     }
     public static void main(String[] args) {
