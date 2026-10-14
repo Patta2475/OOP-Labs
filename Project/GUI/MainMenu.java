@@ -1,17 +1,18 @@
-package Project;
+package Project.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.Font;
 
-public class GUI implements ActionListener {
+public class MainMenu extends Page implements ActionListener {
 
-    private JFrame frame;
+    public MainMenu() {
+        super("Navy Personnel Management System");
 
-    public GUI() {
-        frame = new JFrame("FrameDemo");
         JLabel welcomeMessage = new JLabel("Navy Personnel Management System");
-        welcomeMessage.setBounds(150, 50, 250, 30);
+        welcomeMessage.setFont(new Font("Arial", Font.BOLD, 18));
+        welcomeMessage.setBounds(100, 50, 350, 30);
 
         JButton Addpersonnel = new JButton("Add personnel");
         Addpersonnel.setActionCommand("Addpersonnel");
@@ -25,24 +26,30 @@ public class GUI implements ActionListener {
 
         JButton Exit = new JButton("Exit");
         Exit.setActionCommand("Exit");
-        Exit.addActionListener(this);
         Exit.setBounds(150, 290, 200, 50);
+        Exit.addActionListener(e -> System.exit(0));
 
-        this.
-
-        frame.add(welcomeMessage); frame.add(Addpersonnel); frame.add(Exit); frame.add(Search);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        frame.add(welcomeMessage);
+        frame.add(Addpersonnel);
+        frame.add(Search);
+        frame.add(Exit);
+        show();
     }
     public static void main(String[] args) {
-        new GUI();
+        new MainMenu();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        if (e.getActionCommand().equals("Addpersonnel")){
+            hide();
+            new AddPersonnelPage(this);
+        }
+
+        if (e.getActionCommand().equals("Search")){
+            hide();
+            new SearchPage(this);
+        }
     }
 }
 

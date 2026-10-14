@@ -4,7 +4,14 @@ public class Officer extends NavyPersonnel{
     private String commandUnit;
     private String leaderShipCourse;
 
-    public Officer(String name, String ID, Rank rank, int YearOfService, String commandUnit, String leaderShipCourse){
+    public enum OfficerRank implements Rank {
+        ENSIGN,
+        LIEUTENANT,
+        CAPTAIN,
+        ADMIRAL
+    }
+
+    public Officer(String name, String ID, OfficerRank rank, int YearOfService, String commandUnit, String leaderShipCourse){
         this.name = name;
         id = ID;
         this.rank = rank;
@@ -21,8 +28,12 @@ public class Officer extends NavyPersonnel{
         return leaderShipCourse;
     }
 
-    @Override 
-    public String toString(){
-        return null;
+    public void setCommandUnit(){
+
+    }
+
+    @Override
+    public String toString() {
+        return "Officer: " + name + " (" + id + ") | " + rank + " | Unit: " + commandUnit + " | " + YearOfService + " yrs | Course: " + leaderShipCourse;
     }
 }

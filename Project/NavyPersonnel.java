@@ -21,5 +21,8 @@ public abstract class NavyPersonnel implements Personnel{
         return null;
     }
 
+    public String getName() {
+    return name;
+    }
 
 }
