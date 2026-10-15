@@ -134,9 +134,9 @@ public class EnlistedPage extends Page implements ActionListener{
 
             EnlistedPersonnel p = new EnlistedPersonnel(name, id, rank, years, hours, specialty);
             PersonnelManager.add(p);
-            listArea.setText(PersonnelManager.displayAll());
-
+            
             JOptionPane.showMessageDialog(frame, "Added: " + name);
+            listArea.setText(PersonnelManager.displayAll());
         }
 
         nameBox.setText("");    

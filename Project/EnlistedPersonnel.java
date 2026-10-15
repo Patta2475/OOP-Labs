@@ -40,6 +40,6 @@ public class EnlistedPersonnel extends NavyPersonnel{
 
     @Override
     public String toString() {
-        return "Enlisted Personnel: " + rank + " " + name + " (" + id + ") | " + specialty + " | " + yearOfService + " years | " + dutyHour + " duty hours";
+        return "Enlisted Personnel: " + name + " (" + id + ") | " + rank + " | " + specialty + " | " + yearOfService + " years | " + dutyHour + " duty hours";
     }
 }
