@@ -21,7 +21,7 @@ public class OfficerPage extends Page implements ActionListener{
 
         frame.setSize(500, 700);
 
-        listArea = new JTextArea(PersonnelManager.describeAll());
+        listArea = new JTextArea(PersonnelManager.displayAll());
         listArea.setEditable(false);
         listArea.setLineWrap(true);
         listArea.setWrapStyleWord(true);
@@ -132,7 +132,7 @@ public class OfficerPage extends Page implements ActionListener{
 
             Officer o = new Officer(name, id, rank, years, unitCommand, leadershipCourse);
             PersonnelManager.add(o);
-            listArea.setText(PersonnelManager.describeAll());
+            listArea.setText(PersonnelManager.displayAll());
             
             JOptionPane.showMessageDialog(frame, "Added: " + name);
         }

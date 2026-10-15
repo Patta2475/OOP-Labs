@@ -28,7 +28,7 @@ public class PersonnelManager {
         return false;
     }
 
-    public static String describeAll() {
+    public static String displayAll() {
         StringBuilder sb = new StringBuilder();
         for (Personnel p : list) {
             sb.append(p).append("\n\n");

@@ -25,12 +25,8 @@ public class Officer extends NavyPersonnel{
         return leadershipCourse;
     }
 
-    public int getYearOfService(){
-        return YearOfService;
-    }
-
     @Override
     public String toString() {
-        return "Officer: " + name + " (" + id + ") | " + rank + " | Unit: " + commandUnit + " | " + YearOfService + " yrs | Course: " + leadershipCourse;
+        return "Officer: " + rank + " " + name + " (" + id + ") | Unit: " + commandUnit + " | " + yearOfService + " years | Course: " + leadershipCourse;
     }
 }

@@ -23,7 +23,7 @@ public class EnlistedPage extends Page implements ActionListener{
 
         frame.setSize(500, 700);
 
-        listArea = new JTextArea(PersonnelManager.describeAll());
+        listArea = new JTextArea(PersonnelManager.displayAll());
         listArea.setEditable(false);
         listArea.setLineWrap(true);
         listArea.setWrapStyleWord(true);
@@ -134,12 +134,12 @@ public class EnlistedPage extends Page implements ActionListener{
 
             EnlistedPersonnel p = new EnlistedPersonnel(name, id, rank, years, hours, specialty);
             PersonnelManager.add(p);
-            listArea.setText(PersonnelManager.describeAll());
+            listArea.setText(PersonnelManager.displayAll());
 
             JOptionPane.showMessageDialog(frame, "Added: " + name);
         }
 
-        nameBox.setText("");
+        nameBox.setText("");    
         idBox.setText("");
         yearBox.setText("");
         dutyHourBox.setText("");

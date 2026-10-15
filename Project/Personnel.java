@@ -7,5 +7,5 @@ public interface Personnel {
     int getYearOfService();
     String toString();
 
-    enum Rank {}
+    interface Rank {}
 }

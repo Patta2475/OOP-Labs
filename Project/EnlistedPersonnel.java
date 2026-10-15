@@ -29,9 +29,6 @@ public class EnlistedPersonnel extends NavyPersonnel{
         this.specialty = specialty;
     }
 
-    public int getYearOfService(){
-        return YearOfService;
-    }
 
     public Specialty getSpecialty(){
         return specialty;
@@ -43,6 +40,6 @@ public class EnlistedPersonnel extends NavyPersonnel{
 
     @Override
     public String toString() {
-        return "Enlisted Personnel: " + name + " (" + id + ") | " + rank + " | " + specialty + " | " + YearOfService + " yrs | " + dutyHour + " duty hrs";
+        return "Enlisted Personnel: " + rank + " " + name + " (" + id + ") | " + specialty + " | " + yearOfService + " years | " + dutyHour + " duty hours";
     }
 }
